@@ -158,6 +158,8 @@ This multi-model approach not only provided a comparative analysis of different 
 ## **Model Deployment**
 
 Once the models were trained and evaluated, I proceeded to deploy the best-performing model using a Streamlit web application. The objective of deployment was to make the fraud detection system accessible and interactive, allowing users to input transaction details and receive real-time predictions on whether a transaction is fraudulent.
+
+
 ![ezgif com-video-to-gif-converter (1)](https://github.com/user-attachments/assets/5d41f058-e0d6-415d-b041-fa855eb72c2b)
 
 ## **Future Enhancements**
