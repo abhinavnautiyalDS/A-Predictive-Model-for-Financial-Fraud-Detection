@@ -121,9 +121,95 @@ Note: For recipients with names starting with "M" (Merchants), this information 
 
 7. **What is the distribution of fraud across different time categories (Hour_Category) — like Night, Morning, Evening, etc.?**
    <img width="784" height="484" alt="image" src="https://github.com/user-attachments/assets/b2eaa836-47e3-4b04-ab1e-17e0e1eb83ec" />
+   
    Night and Morning have the highest fraud occurrences.
    Fraud is less frequent in the Evening and Afternoon.
    Fraudsters are more active during night hours, possibly due to reduced monitoring.
+
+## **Data Preprocessing**
+
+The data preprocessing phase involved multiple essential steps to prepare the dataset for effective fraud prediction modeling. Initially, missing values, especially in balance-related columns, were handled by replacing them with zeros to maintain data integrity and ensure consistent calculations. From the nameOrig and nameDest columns, I extracted the first character to create new features Orig_Type and Dest_Type, which indicate whether an account is a customer or merchant. This helped in understanding the nature of the transaction parties.
+
+To capture the time dynamics of transactions, I derived the Hour_of_day feature by converting the step column into a 24-hour clock using modulo operation. Additionally, I categorized each transaction hour into distinct periods of the day like Morning, Afternoon, Evening, and Night to identify time-based fraud patterns. I calculated org_balance_change and dest_balance_change to quantify the actual change in balances due to transactions, providing direct indicators of suspicious fund movements.
+
+Another crucial feature was the AmountToBalanceRatio_Orig, representing the ratio of transaction amount to the origin account's balance, highlighting cases where almost the entire balance is being transacted. Based on these calculations, I also created flag variables such as flag_org_balance_change, flag_dest_balance_change, and flag_AmountToBalanceRatio_Orig to signal potentially risky behaviors like when the entire balance is transferred or when the ratio is unusually high.
+
+Categorical features such as transaction type, account types, and time categories were encoded using label encoding and one-hot encoding to convert them into machine-readable formats. Numerical features were scaled using Min-Max Scaling to bring them into a uniform range, enhancing model convergence and performance.
+
+Finally, to address the critical issue of class imbalance where fraud cases were significantly fewer than non-fraud cases, I applied SMOTE (Synthetic Minority Oversampling Technique). SMOTE helped generate synthetic fraud examples based on existing minority class data, effectively balancing the dataset. This step was crucial in ensuring that the machine learning models do not become biased towards the non-fraudulent class and can better identify fraudulent activities.
+
+<img width="1183" height="527" alt="image" src="https://github.com/user-attachments/assets/f38fc437-0d91-4025-a5d2-3cd06154064d" />
+
+
+## **Model Building**
+
+
+After preprocessing and engineering the data, I proceeded to build and evaluate multiple machine learning models to detect fraudulent transactions. The goal was to compare different algorithms and select the one that best captures the patterns distinguishing fraud from legitimate transactions.
+
+I trained four classification models: Logistic Regression, Decision Tree, Random Forest, and AdaBoost Classifier. Each model was trained on the preprocessed and balanced dataset obtained after applying SMOTE to address the class imbalance between fraud and non-fraud cases.
+
+The Logistic Regression model served as a baseline due to its simplicity and interpretability. The Decision Tree Classifier was used for its ability to capture non-linear relationships and provide feature importance insights. I also trained a Random Forest Classifier, which builds multiple decision trees and aggregates their outputs, reducing overfitting and improving generalization. Lastly, I used the AdaBoost Classifier, which combines multiple weak learners in sequence, focusing more on incorrectly classified instances at each step, thus improving the model’s accuracy.
+
+After training, I evaluated all models based on their accuracy, precision, recall, and F1-score, specifically focusing on how well they detect fraudulent transactions. Despite working on a sampled dataset due to processing constraints, the models performed well, with Random Forest and AdaBoost giving the best performance. The highest accuracy achieved was around 83%, indicating that the model could effectively distinguish between fraudulent and non-fraudulent transactions.
+
+This multi-model approach not only provided a comparative analysis of different algorithms but also ensured that the final selection was backed by robust evaluation across multiple metrics, critical for a fraud detection system where the cost of misclassification is high.
+<img width="1273" height="696" alt="image" src="https://github.com/user-attachments/assets/72002265-e3ef-4b7c-8401-f88c2a7c39d4" />
+
+## **Model Deployment**
+
+Once the models were trained and evaluated, I proceeded to deploy the best-performing model using a Streamlit web application. The objective of deployment was to make the fraud detection system accessible and interactive, allowing users to input transaction details and receive real-time predictions on whether a transaction is fraudulent.
+![ezgif com-video-to-gif-converter (1)](https://github.com/user-attachments/assets/5d41f058-e0d6-415d-b041-fa855eb72c2b)
+
+## **Future Enhancements**
+
+- Scale model to handle the entire 6 lakh+ rows efficiently.
+- Integrate advanced models like XGBoost and LightGBM.
+- Implement real-time fraud detection on streaming data pipelines.
+= Deploy the app with APIs for integration into banking systems.
+
+
+
+## **Conclusion**
+
+In this project, I developed a comprehensive Fraud Detection System by performing deep exploratory data analysis, feature engineering, and training multiple machine learning models on a large financial transaction dataset.
+To handle the sheer volume of data (around 6 lakh rows), I extracted a sample of the population for my analysis and modeling. This was essential due to computational limitations on my processor. This sampling might have slightly impacted the model's generalization, resulting in an achieved accuracy of 83% — which is still promising given the data constraints.
+
+**Summary of Work Done**
+
+Performed thorough EDA revealing that fraudulent transactions are primarily associated with TRANSFER and CASH_OUT transaction types.
+Identified that frauds mostly occur via corporate (C) accounts and during night hours.
+Engineered key features such as:
+
+- Amount to Balance Ratio
+- Origin Balance Change
+- Destination Balance Change
+- Hour of Day Categorization
+
+**Models Trained**
+I trained and evaluated four machine learning models:
+- Logistic Regression
+- Random Forest Classifier
+- AdaBoost Classifier
+- Decision Tree Classifier
+Among these, models like Logistic Regression and Decision Tree performed well on the sample data, with an accuracy of up to 83%.
+
+**Deployment**
+I built an interactive Streamlit web application where users can input transaction details and get real-time fraud predictions, powered by the trained machine learning model. The app also features a custom-designed dark-themed background for better visibility.
+
+**Impact**
+This system is designed to help financial institutions:
+
+- Detect fraudulent activities promptly.
+- Prevent financial losses.
+- Strengthen security protocols based on transaction patterns.
+
+
+
+
+
+
+
+
 
 
 
