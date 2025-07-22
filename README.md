@@ -84,6 +84,20 @@ Note: For recipients with names starting with "M" (Merchants), this information 
 
 ## **EDA**
 
+1. **Distribution of Numerical Feature**
+   <img width="1783" height="2042" alt="image" src="https://github.com/user-attachments/assets/18a78f73-4eda-47b7-a859-23416909ff06" />
+
+   - Most transactions are small to medium, but a few large ones stand out—potential signs of fraud.
+   - Senders usually have low balances, but some accounts show sudden large changes, hinting at draining or dumping of funds.
+   - Fraud and flagged transfers are rare, but the few that exist involve large amounts, suggesting the system catches some but misses others.
+   - Most balance changes are minor, but occasional big jumps may signal fraudulent activity.
+   Typically, transactions are a small part of the sender’s balance, but some unusually large ratios suggest risky or suspicious behaviour.
+
+2. **Distribution of Categorical Feature**
+   <img width="1784" height="919" alt="image" src="https://github.com/user-attachments/assets/75269e42-2547-42a8-9a8e-89166da291e5" />
+
+
+
 
 
 
