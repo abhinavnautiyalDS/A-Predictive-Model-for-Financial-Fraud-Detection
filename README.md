@@ -39,4 +39,54 @@ Note: For recipients with names starting with "M" (Merchants), this information 
 
 - **isFlaggedFraud**: Identifies transactions flagged by the system for suspicious behavior. Specifically, any attempt to transfer more than 200,000 in a single transaction is flagged as potentially illegal.
 
+##  **Project Workflow**:
+
+ - **Exploratory Data Analysis (EDA)**
+
+      Uncovered patterns indicating that TRANSFER and CASH_OUT transactions are more prone to fraud.
+      
+      Fraud transactions often occur during the night.
+      
+      Distinction between Merchant (M) and Customer (C) accounts using prefixes in account names.
+
+- ** Feature Engineering**
+
+      Amount to Balance Ratio: Indicates how much of the origin balance is being transacted.
+      
+      Origin & Destination Balance Change: Captures the actual balance movement.
+      
+      Hour of Day & Hour Category: Helps identify time-based fraud trends (Morning, Afternoon, Evening, Night).
+
+      Flags for suspicious patterns, like when the amount equals the full balance change.
+
+- **Modeling**
+
+Models trained:
+
+      Logistic Regression
+      
+      Decision Tree Classifier
+      
+      Random Forest Classifier
+      
+      AdaBoost Classifier
+
+      Class imbalance handled using SMOTE (Synthetic Minority Oversampling Technique).
+
+- **Results**
+
+Achieved ~83% accuracy on the sampled dataset.
+
+Feature importance revealed transaction type, origin balance changes, and time of transaction as key predictors.
+
+- **Deployment**
+
+Built a Streamlit App that enables users to input transaction details and get real-time fraud predictions.
+
+Backend intelligently calculates engineered features like balance ratios and flags based on minimal user inputs.
+
+## **EDA**
+
+
+
 
