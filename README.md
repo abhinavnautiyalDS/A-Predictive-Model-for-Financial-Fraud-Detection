@@ -96,6 +96,40 @@ Note: For recipients with names starting with "M" (Merchants), this information 
 2. **Distribution of Categorical Feature**
    <img width="1784" height="919" alt="image" src="https://github.com/user-attachments/assets/75269e42-2547-42a8-9a8e-89166da291e5" />
 
+   - Most transactions are CASH-OUT and PAYMENT, with TRANSFER and CASH-IN next, and DEBIT is the least common. This shows cash movements and payments dominate activity.
+   - Almost all transactions are non-fraudulent (0), with very few marked as fraudulent (1). Fraud is super rare here.
+   - Almost all senders are customers (C), with no significant merchant (M) activity. Customers drive most transactions.
+   - Most recipients are customers (C), but some are merchants (M), showing money often goes to both.
+   - Transactions peak in the Afternoon and Evening, with Morning next, and Night is the least busy. Activity follows daily patterns!
+  
+3. **Which Transaction Types are Most Common in Frauds**
+   <img width="784" height="484" alt="image" src="https://github.com/user-attachments/assets/45750b5f-5d9e-46ed-90a0-b0bdb6ef335b" />
+   Most fraudulent transactions are CASH-OUT and Transfer , with a count around 4000, showing fraudsters love to pull money out after taking control.
+
+4. **How Much Money is Moved in Frauds?**
+   <img width="984" height="484" alt="image" src="https://github.com/user-attachments/assets/e844d6a5-e58c-457d-93e3-32bf70bbf293" />
+   This insight suggests that while fraud can occur at any amount, fraud detection systems should be particularly attentive to both small frequent transactions and rare high-value transactions, as both are    common in fraud patterns.
+
+5. **How Do Balances Change in Frauds?**
+   <img width="1184" height="484" alt="image" src="https://github.com/user-attachments/assets/40cf311e-f647-4086-9b11-f6c87b7029d4" />
+
+   - **Origin**: Most fraudulent transactions cause a significant reduction in the origin balance, typically matching the transaction amount.
+   - **Destination**: The destination balance often shows a negative or negligible change, indicating that the credited balance may not reflect the transaction fully (e.g., immediate withdrawal, intermediary accounts).
+     
+6. **Top 10 Most Frequent Fraudulent Accounts**
+   <img width="984" height="484" alt="image" src="https://github.com/user-attachments/assets/5f14a123-485d-4711-a3ba-112433a66ba3" />
+
+7. **What is the distribution of fraud across different time categories (Hour_Category) — like Night, Morning, Evening, etc.?**
+   <img width="784" height="484" alt="image" src="https://github.com/user-attachments/assets/b2eaa836-47e3-4b04-ab1e-17e0e1eb83ec" />
+   Night and Morning have the highest fraud occurrences.
+   Fraud is less frequent in the Evening and Afternoon.
+   Fraudsters are more active during night hours, possibly due to reduced monitoring.
+
+
+
+
+
+
 
 
 
